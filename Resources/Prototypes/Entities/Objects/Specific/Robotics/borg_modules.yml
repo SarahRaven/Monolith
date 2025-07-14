@@ -798,6 +798,15 @@
     - Cautery
     - SawElectric
     - BoneGel
+    # Frontier -> GoobStation -> Monolith: droppable borg items
+  - type: DroppableBorgModule
+    moduleId: Surgery
+    items:
+    - id: OrganHumanBrain
+      whitelist:
+        components:
+        - Organ 
+    # End Frontier -> GoobStation -> Monolith: droppable borg items
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: surgery-module }
 
@@ -817,5 +826,14 @@
     - EnergyCautery
     - AdvancedRetractor
     - BoneGel
+    # Frontier -> GoobStation -> Monolith: droppable borg items
+  - type: DroppableBorgModule
+    moduleId: Surgery
+    items:
+    - id: OrganHumanBrain
+      whitelist:
+        components:
+        - Organ 
+    # End Frontier -> GoobStation -> Monolith: droppable borg items
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: adv-surgery-module }
