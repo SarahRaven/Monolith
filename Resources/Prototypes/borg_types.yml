@@ -6,7 +6,7 @@
   dummyPrototype: BorgChassisGeneric
 
   # Functional
-  extraModuleCount: 5
+  extraModuleCount: 7
   moduleWhitelist:
     tags:
     - BorgModuleGeneric
@@ -37,7 +37,7 @@
   dummyPrototype: BorgChassisEngineer
 
   # Functional
-  extraModuleCount: 3
+  extraModuleCount: 5
   moduleWhitelist:
     tags:
     - BorgModuleGeneric
@@ -73,7 +73,7 @@
   dummyPrototype: BorgChassisMining
 
   # Functional
-  extraModuleCount: 3
+  extraModuleCount: 5
   moduleWhitelist:
     tags:
     - BorgModuleGeneric
@@ -109,7 +109,7 @@
   dummyPrototype: BorgChassisJanitor
 
   # Functional
-  extraModuleCount: 3
+  extraModuleCount: 5
   moduleWhitelist:
     tags:
     - BorgModuleGeneric
@@ -144,7 +144,7 @@
   dummyPrototype: BorgChassisMedical
 
   # Functional
-  extraModuleCount: 3
+  extraModuleCount: 5
   moduleWhitelist:
     tags:
     - BorgModuleGeneric
@@ -191,7 +191,7 @@
   dummyPrototype: BorgChassisService
 
   # Functional
-  extraModuleCount: 3
+  extraModuleCount: 5
   moduleWhitelist:
     tags:
     - BorgModuleGeneric
