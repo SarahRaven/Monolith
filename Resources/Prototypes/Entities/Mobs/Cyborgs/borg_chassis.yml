@@ -100,7 +100,7 @@
       map: ["light"]
       visible: false
   - type: BorgChassis
-    maxModules: 3
+    maxModules: 5
     moduleWhitelist:
       tags:
       - BorgModuleGeneric
@@ -132,7 +132,7 @@
       map: ["light"]
       visible: false
   - type: BorgChassis
-    maxModules: 3
+    maxModules: 5
     moduleWhitelist:
       tags:
       - BorgModuleGeneric
@@ -173,7 +173,7 @@
       map: ["light"]
       visible: false
   - type: BorgChassis
-    maxModules: 3
+    maxModules: 5
     moduleWhitelist:
       tags:
       - BorgModuleGeneric
@@ -209,7 +209,7 @@
       map: ["light"]
       visible: false
   - type: BorgChassis
-    maxModules: 5 # the sixth one broke lol
+    maxModules: 6 # the seventh one broke lol
     moduleWhitelist:
       tags:
       - BorgModuleGeneric
