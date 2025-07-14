@@ -806,6 +806,7 @@
       whitelist:
         components:
         - Organ 
+        - BodyPart
     # End Frontier -> GoobStation -> Monolith: droppable borg items
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: surgery-module }
@@ -834,6 +835,7 @@
       whitelist:
         components:
         - Organ 
+        - BodyPart
     # End Frontier -> GoobStation -> Monolith: droppable borg items
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: adv-surgery-module }
