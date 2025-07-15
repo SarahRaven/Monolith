@@ -399,7 +399,7 @@
     - id: ConstructionBag
       whitelist:
         components:
-        - NFConstructionBag
+        - ConstructionBag
     - id: APCElectronics
       whitelist:
         components:
