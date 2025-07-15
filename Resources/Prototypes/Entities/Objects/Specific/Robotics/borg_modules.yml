@@ -345,6 +345,15 @@
     - SheetGlassLingering0
     - PartRodMetalLingering0
     - FloorTileItemSteelLingering0
+  # Frontier: droppable borg items
+  - type: DroppableBorgModule
+    moduleId: Construction
+    items:
+    - id: ConstructionBag
+      whitelist:
+        components:
+        - NFConstructionBag
+  # End Frontier: droppable borg items
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: construction-module }
 

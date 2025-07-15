@@ -45,6 +45,7 @@
       tags:
       - PrizeTicket
   - type: Dumpable
+  - type: NFConstructionBag
   - type: StaticPrice
     price: 55.5
   - type: ItemToggle
