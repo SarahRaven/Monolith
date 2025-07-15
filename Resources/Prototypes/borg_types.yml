@@ -1,4 +1,9 @@
-﻿# Generic borg
+# SPDX-FileCopyrightText: 2024 Pieter-Jan Briers
+# SPDX-FileCopyrightText: 2025 SarahRaven
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# Generic borg
 - type: borgType
   id: generic
 
