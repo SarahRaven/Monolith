@@ -7477,3 +7477,40 @@ Entries:
   id: 857
   time: '2025-07-14T17:33:17.0000000+00:00'
   url: https://github.com/Monolith-Station/Monolith/pull/1388
+- author: starch70
+  changes:
+    - type: Tweak
+      message: >-
+        Edited a lot about Letoferol fleshmobs (ranged bone spike attack,
+        non-primary infected is permanent, bloodstream is now letoferol, can now
+        walk into doors to open, edited melee attack to not be as dogshit,
+        passive regen)
+  id: 858
+  time: '2025-07-14T21:51:44.0000000+00:00'
+  url: https://github.com/Monolith-Station/Monolith/pull/1403
+- author: SarahRaven
+  changes:
+    - type: Add
+      message: >-
+        Medical Borgs Surgery and Advanced Surgery modules now allow organ
+        pickup/drop. Xop Glorp "Surgery"
+    - type: Tweak
+      message: >-
+        Increased borg chassis max module slots by two. Now use that GPS and
+        Jetpack module slot without limiting your role.
+  id: 859
+  time: '2025-07-15T03:05:06.0000000+00:00'
+  url: https://github.com/Monolith-Station/Monolith/pull/1404
+- author: EctoplasmIsGood
+  changes:
+    - type: Tweak
+      message: Letoferol monsters have been renamed to chimera fleshbeasts
+    - type: Tweak
+      message: Fleshbeasts now have normal blood, a bit more HP, and thermal vision
+    - type: Tweak
+      message: Fleshbeast projectiles no longer infect you, and do a bit more damage
+    - type: Tweak
+      message: Fleshbeast infection is no longer permanent, and reverts upon death
+  id: 860
+  time: '2025-07-15T04:00:28.0000000+00:00'
+  url: https://github.com/Monolith-Station/Monolith/pull/1414
