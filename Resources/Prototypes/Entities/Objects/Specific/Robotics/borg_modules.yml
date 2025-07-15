@@ -343,8 +343,12 @@
     items:
     - SheetSteelLingering0
     - SheetGlassLingering0
+    - SheetPlasticLingering0
+    - SheetPlasteelLingering0
     - PartRodMetalLingering0
-    - FloorTileItemSteelLingering0
+    - FloorTileItemSteelLingering0 
+    - FloorTileItemDarkLingering0
+    - FloorTileItemWhiteLingering0
   # Frontier: droppable borg items
   - type: DroppableBorgModule
     moduleId: Construction
@@ -353,6 +357,16 @@
       whitelist:
         components:
         - NFConstructionBag
+    - id: APCElectronics
+      whitelist:
+        components:
+          - ComputerBoard 
+          - MachineBoard 
+          - BaseElectronics
+    - id: CapacitorStockPart
+      whitelist:
+        components:
+          - MachinePart
   # End Frontier: droppable borg items
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: construction-module }

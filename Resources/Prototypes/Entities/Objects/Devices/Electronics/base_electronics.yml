@@ -5,6 +5,7 @@
   abstract: true
   suffix: Electronics
   components:
+  - type: BaseElectronics
   - type: Item
     storedRotation: -90
   - type: Sprite
