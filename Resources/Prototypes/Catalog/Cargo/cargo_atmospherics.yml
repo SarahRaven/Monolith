@@ -142,7 +142,7 @@
     sprite: Structures/Power/Generation/teg.rsi
     state: teg
   product: CrateTeg 
-  cost: 50000
+  cost: 30000
   category: cargoproduct-category-name-atmospherics
   group: market
   # Create TegCenter, TegCirculator, TegCirculator
