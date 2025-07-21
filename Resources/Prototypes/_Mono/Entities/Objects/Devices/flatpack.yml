@@ -194,3 +194,25 @@
   - type: StaticPrice
     price: 500
 
+- type: entity
+  parent: BaseNFFlatpack
+  id: TegCirculatorFlatpack
+  name: TEG circulator flatpack
+  description: A flatpack used for constructing a TEG circulator.
+  components:
+  - type: Flatpack
+    entity: TegCirculator
+  - type: StaticPrice
+    price: 15000
+
+- type: entity
+  parent: BaseNFFlatpack
+  id: TegCenterFlatpack
+  name: TEG center flatpack
+  description: A flatpack used for constructing a TEG center.
+  components:
+  - type: Flatpack
+    entity: TegCenter
+  - type: StaticPrice
+    price: 20000
+
