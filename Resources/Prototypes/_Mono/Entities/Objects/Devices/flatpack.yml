@@ -204,7 +204,7 @@
   - type: Flatpack
     entity: TegCirculator
   - type: StaticPrice
-    price: 7500
+    price: 1000 
 
 - type: entity
   parent: BaseNFFlatpack
@@ -215,5 +215,5 @@
   - type: Flatpack
     entity: TegCenter
   - type: StaticPrice
-    price: 15000
+    price: 2000 
 
