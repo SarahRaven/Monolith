@@ -366,6 +366,7 @@
   - type: Tag
     tags:
     - BiomassBounty
+    - RawMaterial
 
 # Following not used currently
 - type: entity
