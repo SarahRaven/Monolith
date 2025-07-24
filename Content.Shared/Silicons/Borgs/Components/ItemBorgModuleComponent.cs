@@ -53,5 +53,6 @@ public sealed partial class ItemBorgModuleComponent : Component
     /// </summary>
     [DataField(required: true)]
     public string ModuleId = default!;
+
 }
 

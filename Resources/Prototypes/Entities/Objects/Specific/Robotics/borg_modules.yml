@@ -882,6 +882,10 @@
   parent: [ BaseBorgModuleMedical, BaseProviderBorgModule ]
   name: advanced surgery cyborg module
   components:
+  - type: BorgModule
+    onAdd: # Mono: the advanced surgery module adds bluespace surgery (clothing bypass) to borg.
+      components:
+      - type: SurgeryIgnoreClothing
   - type: Sprite
     layers:
     - state: medical

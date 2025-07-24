@@ -6,11 +6,19 @@ using Content.Shared.Whitelist;
 using Robust.Shared.Containers;
 using Content.Shared._NF.Silicons.Borgs; // Frontier
 
+using Robust.Shared.Serialization.Manager;
+using Robust.Shared.Network;
+using Robust.Shared.Timing;
+using Robust.Shared.Prototypes;
+
 namespace Content.Server.Silicons.Borgs;
 
 /// <inheritdoc/>
 public sealed partial class BorgSystem
 {
+    [Dependency] private readonly IComponentFactory _compFactory = default!;
+    [Dependency] private readonly ISerializationManager _serManager = default!;
+
     public void InitializeModules()
     {
         SubscribeLocalEvent<BorgModuleComponent, EntGotInsertedIntoContainerMessage>(OnModuleGotInserted);
@@ -366,6 +374,43 @@ public sealed partial class BorgSystem
         }
     }
 
+
+    private void AddComponents(EntityUid chassisID, EntityUid moduleID, BorgChassisComponent? chassis = null, BorgModuleComponent? module = null)
+    {
+        if (!Resolve(chassisID, ref chassis) || !Resolve(moduleID, ref module))
+            return;
+
+        if (module.OnAdd == null)
+            return;
+
+        foreach (var (key, comp) in module.OnAdd)
+        {
+            var compType = comp.Component.GetType();
+            if (HasComp(chassisID, compType))
+                continue;
+
+            var newComp = (Component) _serManager.CreateCopy(comp.Component, notNullableOverride: true);
+            newComp.Owner = chassisID;
+            EntityManager.AddComponent(chassisID, newComp, true);
+            if (newComp.NetSyncEnabled)
+                Dirty(chassisID, newComp);
+        }
+    }
+
+    private void RemoveComponents(EntityUid chassisID, EntityUid moduleID, BorgChassisComponent? chassis = null, BorgModuleComponent? module = null)
+    {
+        if (!Resolve(chassisID, ref chassis) || !Resolve(moduleID, ref module))
+            return;
+
+        if (module.OnAdd == null)
+            return;
+        
+        foreach (var (key, comp) in module.OnAdd)
+        {
+            RemComp(chassisID, comp.Component.GetType());
+        }
+    }
+
     /// <summary>
     /// Installs a single module into a borg.
     /// </summary>
@@ -376,6 +421,12 @@ public sealed partial class BorgSystem
 
         if (moduleComponent.Installed)
             return;
+
+        // Mono: extend modules to allow adding components after install
+        if (moduleComponent.OnAdd != null)
+        {
+            AddComponents(uid, module, component, moduleComponent);
+        }
 
         moduleComponent.InstalledEntity = uid;
         var ev = new BorgModuleInstalledEvent(uid);
@@ -392,6 +443,12 @@ public sealed partial class BorgSystem
 
         if (!moduleComponent.Installed)
             return;
+
+        // Mono: extend modules to allow removing components after uninstall
+        if (moduleComponent.OnAdd != null)
+        {
+            RemoveComponents(uid, module, component, moduleComponent);
+        }
 
         moduleComponent.InstalledEntity = null;
         var ev = new BorgModuleUninstalledEvent(uid);
