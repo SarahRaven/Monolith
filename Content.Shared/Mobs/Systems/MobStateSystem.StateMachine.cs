@@ -109,6 +109,7 @@ public partial class MobStateSystem
 
         OnExitState(target, component, oldState);
         component.CurrentState = newState;
+        component.PreviousState = oldState;
         OnEnterState(target, component, newState);
 
         var ev = new MobStateChangedEvent(target, component, oldState, newState, origin);
