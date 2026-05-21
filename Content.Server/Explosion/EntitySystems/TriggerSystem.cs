@@ -281,14 +281,8 @@ namespace Content.Server.Explosion.EntitySystems
                 {
                     case MobState.Critical:
                     {
-                        if (mobstate.PreviousState == MobState.Dead)
-                        {
-                            _radioSystem.SendRadioMessage(uid, reviveMessage, radioChannel, uid, null, language);
-                        }
-                        else
-                        {
-                            _radioSystem.SendRadioMessage(uid, critMessage, radioChannel, uid, null, language);
-                        }
+                        var message = mobstate.PreviousState == MobState.Dead ? reviveMessage : critMessage;
+                        _radioSystem.SendRadioMessage(uid, message, radioChannel, uid, null, language);
                         break;
                     }
                     case MobState.Dead:
