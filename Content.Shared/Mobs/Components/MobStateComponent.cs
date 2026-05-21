@@ -21,7 +21,7 @@ namespace Content.Shared.Mobs.Components
         [AutoNetworkedField, ViewVariables]
         public MobState CurrentState { get; set; } = MobState.Alive;
 
-        // We track the previous state to allow deathrattles to not just say 
+        // We track the previous state to allow deathrattles to not just say // Mono
         // people went crit when revived
         [AutoNetworkedField, ViewVariables]
         public MobState PreviousState { get; set; } = MobState.Alive;
