@@ -58,6 +58,25 @@ public sealed partial class TemperatureSystem : EntitySystem
             OnParentThresholdStartup);
         SubscribeLocalEvent<ContainerTemperatureDamageThresholdsComponent, ComponentShutdown>(
             OnParentThresholdShutdown);
+
+        // _Mono: Adding and removing of heat immunity
+        SubscribeLocalEvent<TemperatureImmunityComponent, ComponentInit>(OnHeatImmuneInit);
+        SubscribeLocalEvent<TemperatureImmunityComponent, ComponentRemove>(OnHeatImmuneRemove);
+    }
+
+    private void OnHeatImmuneInit(EntityUid uid, TemperatureImmunityComponent tempImmunity, ComponentInit args)
+    {
+        if (TryComp<TemperatureComponent>(uid, out var temperature))
+        {
+            temperature.HasImmunity = true;
+        }
+    }
+    private void OnHeatImmuneRemove(EntityUid uid, TemperatureImmunityComponent tempImmunity, ComponentRemove args)
+    {
+        if (TryComp<TemperatureComponent>(uid, out var temperature))
+        {
+            temperature.HasImmunity = false;
+        }
     }
 
     public override void Update(float frameTime)
@@ -132,6 +151,17 @@ public sealed partial class TemperatureSystem : EntitySystem
     {
         if (!Resolve(uid, ref temperature, false))
             return;
+
+        // _Mono: Used due to some weird logic with entities inside heatshielded entities still receiving heat.
+        if (TryComp<TemperatureImmunityComponent>(uid, out var compImmune))
+        {
+            if (TryComp<TemperatureComponent>(uid, out var compTemp))
+            {
+                if (temperature.CurrentTemperature != Atmospherics.T20C)
+                    ForceChangeTemperature(uid, Atmospherics.T20C, compTemp);
+            }
+            return;
+        }
 
         if (!ignoreHeatResistance)
         {
