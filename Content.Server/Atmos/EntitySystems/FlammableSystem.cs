@@ -348,6 +348,14 @@ namespace Content.Server.Atmos.EntitySystems
             if (!Resolve(uid, ref flammable))
                 return;
 
+            // _Mono: TemperatureImmunity also means not being set on fire through stacks transmitted from outside entity to inside entity
+            if (TryComp<TemperatureImmunityComponent>(uid, out var tempImmunity))
+            {
+                flammable.FireStacks = 0;
+                UpdateAppearance(uid, flammable);
+                return;
+            }
+
             if (flammable.AlwaysCombustible)
             {
                 flammable.FireStacks = Math.Max(flammable.FirestacksOnIgnite, flammable.FireStacks);

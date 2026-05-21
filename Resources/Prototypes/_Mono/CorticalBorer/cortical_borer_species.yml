@@ -76,6 +76,7 @@
     eggProto: "CorticalBorerEgg"
     addOnInfest:
     - type: PressureImmunity
+    - type: TemperatureImmunity
     removeOnInfest:
     - type: CanEscapeInventory
   - type: UserInterface
