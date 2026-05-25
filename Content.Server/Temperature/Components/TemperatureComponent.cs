@@ -82,11 +82,4 @@ public sealed partial class TemperatureComponent : Component
     /// </summary>
     [DataField]
     public float InteractionExchangeCoefficient = 0.25f;
-
-    /// <summary>
-    /// Mono: Whether the entity is immune to temperature (i.e possesses the TemperatureImmunity component)
-    /// </summary>
-    [ViewVariables(VVAccess.ReadWrite)]
-    public bool HasImmunity = false;
-    
 }
