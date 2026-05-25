@@ -153,10 +153,13 @@ public sealed partial class TemperatureSystem : EntitySystem
             return;
 
         // _Mono: Used due to some weird logic with entities inside heatshielded entities still receiving heat.
-        if (temperature.HasImmunity)
+        if (TryComp<TemperatureImmunityComponent>(uid, out var compImmune))
         {
-            if (temperature.CurrentTemperature != Atmospherics.T20C)
-                ForceChangeTemperature(uid, Atmospherics.T20C, temperature);
+            if (TryComp<TemperatureComponent>(uid, out var compTemp))
+            {
+                if (temperature.CurrentTemperature != Atmospherics.T20C)
+                    ForceChangeTemperature(uid, Atmospherics.T20C, compTemp);
+            }
             return;
         }
 
