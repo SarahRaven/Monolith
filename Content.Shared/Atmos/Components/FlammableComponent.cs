@@ -110,4 +110,12 @@ namespace Content.Shared.Atmos.Components
         [DataField]
         public ProtoId<AlertPrototype> FireAlert = "Fire";
     }
+
+    // Mono: Event to see whether target is immune to heat stacks
+    /// <summary>
+    /// Event raised on an entity to determine if it is immune to ignition. 
+    /// </summary>
+    [ByRefEvent]
+    public record struct TryIgniteEvent(bool Cancelled = false);
+
 }

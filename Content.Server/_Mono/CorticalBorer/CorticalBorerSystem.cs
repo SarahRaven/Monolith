@@ -8,6 +8,7 @@ using Content.Server.Ghost.Roles.Components;
 using Content.Server.Medical;
 using Content.Server.Medical.Components;
 using Content.Server.Nutrition.Components;
+using Content.Server.Atmos.Components;
 using Content.Shared._Mono.CorticalBorer;
 using Content.Shared._Starlight.CollectiveMind;
 using Content.Shared.Administration.Logs;
@@ -65,6 +66,8 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
 
         SubscribeLocalEvent<CorticalBorerComponent, MindRemovedMessage>(OnMindRemoved);
         SubscribeLocalEvent<CorticalBorerComponent, ModifyChangedTemperatureEvent>(OnTemperatureChange);
+        SubscribeLocalEvent<CorticalBorerComponent, TryIgniteEvent>(OnIgniteAttempt);
+        SubscribeLocalEvent<CorticalBorerComponent, CheckSkipRegulationEvent>(OnCheckSkipRegulation);
     }
 
     private void OnStartup(Entity<CorticalBorerComponent> ent, ref ComponentStartup args)
@@ -428,5 +431,17 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
 
         // Misnamed variable, TemperatureDelta is actually the Heat of the component (thus TempChange = TemperatureDelta/HeatCapacity).
         args.TemperatureDelta = 0;
+    }
+
+    private void OnIgniteAttempt(Entity<CorticalBorerComponent> ent, ref TryIgniteEvent args)
+    {
+        // Abort ignites while inside a host. Makes no sense to burn inside their contained brain.
+        args.Cancelled = ent.Comp.Host.HasValue;
+    }
+
+    private void OnCheckSkipRegulation(Entity<CorticalBorerComponent> ent, ref CheckSkipRegulationEvent args)
+    {
+        // Disable thermal regulation while inside host to avoid overheating.
+        args.SkipRegulation = ent.Comp.Host.HasValue;
     }
 }

@@ -59,6 +59,12 @@ public sealed partial class ThermalRegulatorSystem : EntitySystem
 
         if (ent.Comp1.ProcessWhileCrit == false && TryComp<MobStateComponent>(ent, out var mobComp2) && mobComp2.CurrentState == MobState.Critical)
             return;
+
+        // Check to see if we're disabling thermal temporarily
+        var disableThermal = new CheckSkipRegulationEvent();
+        RaiseLocalEvent(ent, ref disableThermal);
+        if (disableThermal.SkipRegulation)
+            return;
         // mono end
 
         var totalMetabolismTempChange = ent.Comp1.MetabolismHeat - ent.Comp1.RadiatedHeat;

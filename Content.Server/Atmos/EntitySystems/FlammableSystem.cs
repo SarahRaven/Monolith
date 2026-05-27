@@ -110,9 +110,6 @@ namespace Content.Server.Atmos.EntitySystems
             }
         }
 
-        // Mono: TryComp to see whether target is immune to heat stacks
-        record struct TryIgniteEvent(bool Cannceled = false);
-
         // Frontier: ignition on projectile hit event
         private void OnProjectileHit(EntityUid uid, IgniteOnProjectileHitComponent component, ProjectileHitEvent args)
         {
@@ -350,6 +347,15 @@ namespace Content.Server.Atmos.EntitySystems
         {
             if (!Resolve(uid, ref flammable))
                 return;
+
+            // _Mono: Used to intercept and remove the event on things like Cortical Borers inside hosts.
+            var igniteCheck = new TryIgniteEvent();
+            RaiseLocalEvent(uid, ref igniteCheck);
+            if (igniteCheck.Cancelled)
+            {
+                Extinguish(uid, flammable);
+                return;
+            }
 
             if (flammable.AlwaysCombustible)
             {

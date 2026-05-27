@@ -74,3 +74,12 @@ public sealed partial class ThermalRegulatorComponent : Component
     [DataField]
     public bool ProcessWhileCrit = true;
 }
+
+
+// Mono: Event to see whether ThermalRegulation is disabled temporarily
+/// <summary>
+/// Event raised on an entity to determine if Thermal Regulation is temporarily disabled.
+/// </summary>
+[ByRefEvent]
+public record struct CheckSkipRegulationEvent(bool SkipRegulation = false);
+
