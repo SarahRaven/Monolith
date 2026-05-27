@@ -110,5 +110,4 @@ namespace Content.Shared.Atmos.Components
         [DataField]
         public ProtoId<AlertPrototype> FireAlert = "Fire";
     }
-
 }
