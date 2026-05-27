@@ -498,4 +498,8 @@ namespace Content.Server.Atmos.EntitySystems
             }
         }
     }
+
+    // Mono: Event to see whether the target is immune to heat stacks
+    [ByRefEvent]
+    public record struct TryIgniteEvent(bool Cancelled = false);
 }
