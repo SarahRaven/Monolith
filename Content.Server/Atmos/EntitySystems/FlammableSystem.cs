@@ -110,6 +110,9 @@ namespace Content.Server.Atmos.EntitySystems
             }
         }
 
+        // Mono: TryComp to see whether target is immune to heat stacks
+        record struct TryIgniteEvent(bool Cannceled = false);
+
         // Frontier: ignition on projectile hit event
         private void OnProjectileHit(EntityUid uid, IgniteOnProjectileHitComponent component, ProjectileHitEvent args)
         {
