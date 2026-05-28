@@ -60,11 +60,6 @@
   reagent: Nocturine
 
 - type: borerChemical
-  id: borerInaprovaline
-  cost: 5
-  reagent: Inaprovaline
-
-- type: borerChemical
   id: borerLeporazine
   cost: 5
   reagent: Leporazine
@@ -76,23 +71,18 @@
 
 - type: borerChemical
   id: borerWeh
-  cost: 4
+  cost: 2
   reagent: JuiceThatMakesYouWeh
 
 - type: borerChemical
   id: borerHew
-  cost: 4
+  cost: 2
   reagent: JuiceThatMakesYouHew
 
 - type: borerChemical
   id: borerHonk
-  cost: 4
+  cost: 5
   reagent: Honk
-
-- type: borerChemical
-  id: borerArithrazine
-  cost: 8
-  reagent: Arithrazine
 
 - type: borerChemical
   id: borerBarozine
